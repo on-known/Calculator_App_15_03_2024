@@ -3,6 +3,8 @@ import 'package:flutter_calculator_provider/Constant/color.dart';
 import 'package:flutter_calculator_provider/Constant/widget_data.dart';
 import 'package:flutter_calculator_provider/Screens/caculateButton.dart';
 import 'package:flutter_calculator_provider/Widgets/formfieldtext.dart';
+import 'package:flutter_calculator_provider/provider/cal_provider.dart';
+import 'package:provider/provider.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -11,7 +13,9 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
     const Padding = EdgeInsets.symmetric(horizontal: 25, vertical: 30);
-    return Scaffold(
+    return Consumer<calculatorProvider>(
+        builder: (BuildContext context, calculatorProvider value, child) {
+      return Scaffold(
         appBar: AppBar(
           title: const Text(
             "Calculator App",
@@ -87,6 +91,8 @@ class Home extends StatelessWidget {
               ),
             ),
           ],
-        ));
+        ),
+      );
+    });
   }
 }

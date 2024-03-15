@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator_provider/Screens/home_screen.dart';
+import 'package:flutter_calculator_provider/provider/cal_provider.dart';
+import 'package:provider/provider.dart';
 
 void main() {
   runApp(const MyApp());
@@ -15,9 +17,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      theme: ThemeData.dark(),
-      home: const Home(),
+    return ChangeNotifierProvider(
+      create: (context) => calculatorProvider(),
+      child: MaterialApp(
+        theme: ThemeData.dark(),
+        home: const Home(),
+      ),
     );
   }
 }
