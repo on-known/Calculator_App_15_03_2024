@@ -23,11 +23,19 @@ class calculatorProvider extends ChangeNotifier {
       default:
         compcontroller.text += value;
     }
+
+    compcontroller.selection = TextSelection.fromPosition(
+      TextPosition(offset: compcontroller.text.length),
+    );
   }
 
   compute() {
-    String text = compcontroller.text;
-    compcontroller.text = text.interpret().toString();
+    try {
+      String text = compcontroller.text;
+      compcontroller.text = text.interpret().toString();
+    } catch (e) {
+      print(e);
+    }
   }
 
   @override

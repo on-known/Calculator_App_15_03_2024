@@ -13,8 +13,9 @@ class Home extends StatelessWidget {
   Widget build(BuildContext context) {
     final screenheight = MediaQuery.of(context).size.height;
     const Padding = EdgeInsets.symmetric(horizontal: 25, vertical: 30);
+
     return Consumer<calculatorProvider>(
-        builder: (BuildContext context, calculatorProvider value, child) {
+        builder: (BuildContext context, providerValue, child) {
       return Scaffold(
         appBar: AppBar(
           title: const Text(
@@ -25,7 +26,9 @@ class Home extends StatelessWidget {
         ),
         body: Column(
           children: [
-            const CustomFormField(),
+            CustomFormField(
+              controller: providerValue.compcontroller,
+            ),
             const Spacer(),
             Container(
               height: screenheight * .6,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator_provider/Constant/color.dart';
+import 'package:flutter_calculator_provider/provider/cal_provider.dart';
+import 'package:provider/provider.dart';
 
 class Button1 extends StatelessWidget {
   const Button1(
@@ -10,7 +12,7 @@ class Button1 extends StatelessWidget {
   Widget build(BuildContext context) {
     return InkWell(
       onTap: () {
-        print(label);
+        Provider.of<calculatorProvider>(context, listen: false).setvalue(label);
       },
       child: Material(
         color: Appcolor.secondary2color,

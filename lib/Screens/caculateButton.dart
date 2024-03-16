@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_calculator_provider/Constant/color.dart';
+import 'package:flutter_calculator_provider/provider/cal_provider.dart';
 import 'package:provider/provider.dart';
-import "package:function_tree/function_tree.dart";
+
 
 class EqualButton extends StatelessWidget {
   const EqualButton({
@@ -11,7 +12,9 @@ class EqualButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return InkWell(
-      onTap: () {},
+      onTap: () {
+        Provider.of<calculatorProvider>(context, listen: false).setvalue("=");
+      },
       child: Container(
         height: 160,
         width: 70,
